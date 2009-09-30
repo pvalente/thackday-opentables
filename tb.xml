@@ -6,10 +6,11 @@
   <bindings>
     <select itemPath="excelencias.search.result" produces="XML" >
       <urls>
-        <url env="all">http://www.excelencias.org.br/@busca.php</url>
+        <!--<url env="all">http://www.excelencias.org.br/@busca.php</url>-->
+		<url></url>
       </urls>
       <inputs>
-        <key id="nome" type="xs:string" paramType="query" required="true" />
+        <!--<key id="nome" type="xs:string" paramType="query" required="true" />-->
       </inputs>
 	<execute>
 	     <![CDATA[
