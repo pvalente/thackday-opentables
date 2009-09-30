@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<table xmlns="http://query.yahooapis.com/v1/schema/table.xsd">
+  <meta>
+    <sampleQuery>select * from {table} where query='maluf'</sampleQuery>
+  </meta>
+  <bindings>
+    <select itemPath="excelencias.search.result" produces="XML" >
+      <urls>
+        <url env="all">http://www.excelencias.org.br/@busca.php</url>
+      </urls>
+      <inputs>
+        <key id="nome" type="xs:string" paramType="query" required="true" />
+      </inputs>
+	<execute>
+	     <![CDATA[
+	     // Transform txt in xml
+	     response.object = "<results><excelencias><search><result>oi</result></search></excelencias><results>";
+	     ]]>
+	</execute>
+    </select>
+  </bindings>
+</table>
