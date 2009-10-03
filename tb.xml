@@ -10,17 +10,17 @@
 <url></url>
 </urls>
 <execute><![CDATA[
-var nome = "maluf"
+var nome = "maluf";
 var q = y.query('select href, strong from html where url="http://www.excelencias.org.br/@busca.php?nome='+ nome +'" and xpath=\'//div[@id="contem"]/a\'');  
 var results = q.results;  
 
-entries = <entries></entries>,//prep the output object
-entry = null,//individual entry in xml obj. used in loop below.
-a = null,
+entries = <entries></entries>;//prep the output object
+entry = null; //individual entry in xml obj. used in loop below.
+a = null;
 
 for each(a in results){
 var id = new RegExp("id=\\d+").exec(a.href);
-var fdp = a.strong
+var fdp = a.strong;
 a.appendChild(id);
 a.appendChild(fdp);
 entries.appendChild(a);
