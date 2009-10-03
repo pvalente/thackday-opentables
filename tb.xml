@@ -16,6 +16,7 @@ var results = q.results;
 
 entries = <entries></entries>,//prep the output object
 entry = null,//individual entry in xml obj. used in loop below.
+a = null,
 
 for each(a in results){
 var id = new RegExp("id=\\d+").exec(a.href);
