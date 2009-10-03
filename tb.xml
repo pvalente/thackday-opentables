@@ -25,15 +25,14 @@ a.appendChild(id);
 a.appendChild(fdp);
 entries.appendChild(a);
 }
-response.object = '<results>
-        <a href="@casa.php?id=720&amp;cs=1">
-            <strong>Paulo Maluf</strong>
-        </a>
-        <a href="@casa.php?id=6864&amp;cs=13">
-            <strong>Guilherme Antonio Maluf</strong>
-        </a>
-    </results>
-';
+response.object = '<results>'
++'        <a href="@casa.php?id=720&amp;cs=1">'
++'            <strong>Paulo Maluf</strong>'
++'       </a>'
++'        <a href="@casa.php?id=6864&amp;cs=13">'
++'            <strong>Guilherme Antonio Maluf</strong>'
++'        </a>'
++'    </results>';
 ]]></execute>
     </select>
  
