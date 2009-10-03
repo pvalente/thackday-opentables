@@ -25,7 +25,7 @@ a.appendChild(id);
 a.appendChild(fdp);
 entries.appendChild(a);
 }
-response.object = entries;
+response.object = results;
 ]]></execute>
     </select>
  
