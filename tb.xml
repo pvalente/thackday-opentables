@@ -1,23 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <table xmlns="http://query.yahooapis.com/v1/schema/table.xsd">
   <meta>
-    <sampleQuery>select * from {table} where query='maluf'</sampleQuery>
+	<description></description>
+<sampleQuery>select * from {table} where nome="maluf"</sampleQuery> 
   </meta>
   <bindings>
-    <select itemPath="excelencias.search.result" produces="XML" >
-      <urls>
-        <!--<url env="all">http://www.excelencias.org.br/@busca.php</url>-->
-		<url></url>
-      </urls>
-      <inputs>
-        <!--<key id="nome" type="xs:string" paramType="query" required="true" />-->
-      </inputs>
-	<execute>
-	     <![CDATA[
-	     // Transform txt in xml
-	     response.object = "<results><excelencias><search><result>oi</result></search></excelencias><results>";
-	     ]]>
-	</execute>
+    <select itemPath="" produces="XML">
+<urls>
+<url></url>
+</urls>
+<execute><![CDATA[
+var nome = "maluf"
+var q = y.query('select href, strong from html where url="http://www.excelencias.org.br/@busca.php?nome='+ nome +'" and xpath=\'//div[@id="contem"]/a\'');  
+var results = q.results;  
+
+entries = <entries></entries>,//prep the output object
+entry = null,//individual entry in xml obj. used in loop below.
+
+for each(a in results){
+var id = new RegExp("id=\\d+").exec(a.href);
+var fdp = a.strong
+a.appendChild(id);
+a.appendChild(fdp);
+entries.appendChild(a);
+}
+response.object = entries;
+]]></execute>
     </select>
+ 
   </bindings>
 </table>
