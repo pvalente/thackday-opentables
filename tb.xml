@@ -10,9 +10,13 @@
 <url></url>
 </urls>
 <execute><![CDATA[
+	 default xml namespace = "http://www.w3.org/2005/Atom";
+var xml = request.get().response; //call the url defined above
+
 var nome = "maluf";
 var q = y.query('select href, strong from html where url="http://www.excelencias.org.br/@busca.php?nome='+ nome +'" and xpath=\'//div[@id="contem"]/a\'');  
 var results = q.results;  
+results = xml;
 
 entries = <entries></entries>;//prep the output object
 entry = null; //individual entry in xml obj. used in loop below.
