@@ -10,7 +10,7 @@
 <url></url>
 </urls>
 <inputs>
-    <key id='id' type='xs:integer' paramType='variable' required="true" />
+    <key id='id' type='xs:string' paramType='variable' required="true" />
 </inputs>
 <execute><![CDATA[
 var q = y.query('select * from html where url="http://www.excelencias.org.br/candidatos/@candidato_n.php?id='+id+'"');  
