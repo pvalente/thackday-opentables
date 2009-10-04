@@ -15,12 +15,15 @@
 <execute><![CDATA[
 var q = y.query('select * from html where url="http://www.excelencias.org.br/candidatos/@candidato_n.php?id='+id+'"');  
 var data = q.results;  
-y.log(data);
 
 var entry = <details></details>;
 
 cpf = new RegExp("\\d{3}\\.\\d{3}\\.\\d{3}-\\d{2}").exec(data); // search by id in entire a tag
 cpf = cpf[0];
+
+data_txt = y.xpath(data,"xpath='//*/p[@id=\"txt\"]'")
+y.log(data_txt);
+
 nome = new RegExp("<br/> (.*)</p").exec(data);
 
 
