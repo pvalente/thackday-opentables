@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<table xmlns="http://query.yahooapis.com/v1/schema/table.xsd">
+  <meta>
+<description></description>
+        <sampleQuery>select * from {table} where id=720</sampleQuery>
+  </meta>
+  <bindings>
+    <select itemPath="details" produces="XML">
+<urls>
+<url></url>
+</urls>
+<inputs>
+    <key id='id' type='xs:integer' paramType='variable' required="true" />
+</inputs>
+<execute><![CDATA[
+var myRequest = y.rest('http://www.excelencias.org.br/candidatos/@candidato_n.php?id='+id);  
+var data = myRequest.get().response;  
+
+var entry = <details></details>;
+
+entry.appendChild(<data>{data}</data>); //
+
+response.object = entry;
+]]></execute>
+    </select>
+ 
+  </bindings>
+</table>
