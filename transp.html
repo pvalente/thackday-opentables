@@ -1,0 +1,57 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+   "http://www.w3.org/TR/html4/loose.dtd">
+
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>Transp</title>
+	<meta name="generator" content="TextMate http://macromates.com/">
+	<meta name="author" content="Pedro Valente">
+	<!-- Date: 2009-09-17 -->
+</head>
+<body>
+<p>Busca no projeto excelências da Transparência Brasil, feita por intermédio do YQL.</p>
+<p>Veja o código fonte aqui <a href="http://github.com/pvalente/thackday-opentables">http://github.com/pvalente/thackday-opentables</a></p>
+	
+	
+<br><br>
+
+<!-- Inside the div you should write ONLY your meme name -->
+<input type="text" id="nomePolitico" value="maluf"></input><a href="#" onClick="carregaPoliticos(document.getElementById('nomePolitico').value)">--- Carrega ---</a>
+<div id="politicos"></div>
+<script type="text/javascript" charset="utf-8">
+	
+	// 1. Finds out the meme name 
+	var memediv = document.getElementById('politicos');	
+	// 2. Styles the box and tell the user it is loading
+	memediv.setAttribute('style',  "width:400px; height: 200px; padding: 2px; background-color: #fff; border: 1px solid #ccc; font-family: sans-serif; font-size: 12px");
+	memediv.innerHTML = "Loading...";
+	
+	// 3. Concatenates the meme name into the YQL call
+	
+	
+	// 4. Creates the script tag that will execute the YQL call and appends it to the HEAD
+	//  this causes it to be executed
+	function carregaPoliticos(nome) {
+
+			var yqlurl = "http://query.yahooapis.com/v1/public/yql?q=use%20%22http%3A%2F%2Fgithub.com%2Fpvalente%2Fthackday-opentables%2Fraw%2Fmaster%2Fdetalhe.xml%22as%20d%3B%20use%20%22http%3A%2F%2Fgithub.com%2Fpvalente%2Fthackday-opentables%2Fraw%2Fmaster%2Ftb.xml%22as%20tb%3B%20select%20*%20from%20d%20where%20id%20in%20(select%20id(1)%20from%20tb%20where%20nome%3D'"+ nome +"')&format=json&env=http%3A%2F%2Fdatatables.org%2Falltables.env&callback=bb";
+		var x = document.createElement('script')
+		x.src = yqlurl
+		document.getElementsByTagName('head')[0].appendChild(x);
+	}
+	
+	// 5. Declares the callback function that the YQL query will call when it loads
+	// this was specified in the YQL console http://developer.yahoo.com/yql/console
+	function bb(data) { // bb means Build Badge
+		
+		// a. The results from YQL end up in here through the 'data' parameter.
+		// For brevity sake we attribute it to m
+		var m = data.query.results.details;
+
+		// b. Injects the variables into the HTML template that will go into the badge div
+		memediv.innerHTML = "<img src='" + m.image_url + "' style='float:left; margin-right: 4px;'><h3>" +  m.nome + "</h3>CPF: " + m.cpf ;
+	}
+</script>
+
+</body>
+</html>
