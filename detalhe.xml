@@ -33,8 +33,7 @@ data_img = y.xpath(data,"//img")
 
 y.log(data_img);
 
-image_url = new RegExp('<img src=\"(.*jpg)\">').exec(data_img);
-
+image_url = new RegExp('src=\"(.*jpg)\"').exec(data_img);
 
 if (image_url != null) {
 	image_url = image_url[1];
