@@ -14,7 +14,7 @@
 </inputs>
 <execute><![CDATA[
 var myRequest = y.rest('http://www.excelencias.org.br/candidatos/@candidato_n.php?id='+id);  
-var data = myRequest.get().response;  
+var data = myRequest.contentType('text/html').charset('ISO-8859-1').get().response;  
 
 y.log(data);
 
