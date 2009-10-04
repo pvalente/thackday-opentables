@@ -16,7 +16,7 @@
 var myRequest = y.rest('http://www.excelencias.org.br/candidatos/@candidato_n.php?id='+id);  
 var data = myRequest.get().response;  
 
-data = "lalala";
+data = id;
 
 var entry = <details></details>;
 
