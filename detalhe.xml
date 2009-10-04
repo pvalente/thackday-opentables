@@ -16,6 +16,8 @@
 var q = y.query('select * from html where url="http://www.excelencias.org.br/candidatos/@candidato_n.php?id='+id+'"');  
 var data = q.results;  
 
+y.log(data);
+
 var entry = <details></details>;
 
 cpf = new RegExp("\\d{3}\\.\\d{3}\\.\\d{3}-\\d{2}").exec(data); // search by id in entire a tag
@@ -29,7 +31,6 @@ image_url = new RegExp('<img src=\"(.*)\">').exec(data);
 if (image_url != null) {
 	image_url = image_url[1];
 }
-
 
 entry.appendChild(<cpf>{cpf}</cpf>); //
 entry.appendChild(<nome>{nome}</nome>);
