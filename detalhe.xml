@@ -21,9 +21,14 @@ var entry = <details></details>;
 cpf = new RegExp("\\d{3}\\.\\d{3}\\.\\d{3}-\\d{2}").exec(data); // search by id in entire a tag
 cpf = cpf[0];
 nome = new RegExp("<b>Nome de batismo</b>:<br> (.*)</p>").exec(data);
-nome = nome[1];
+if (nome != null) {
+	nome = nome[1];
+}
+
 image_url = new RegExp('<img src=\"(.*)\">').exec(data);
-image_url = image_url[1];
+if (image_url != null) {
+	image_url = image_url[1];
+}
 
 
 entry.appendChild(<cpf>{cpf}</cpf>); //
