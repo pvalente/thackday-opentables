@@ -5,7 +5,7 @@
         <sampleQuery>select * from {table} where id=720</sampleQuery>
   </meta>
   <bindings>
-    <select itemPath="results" produces="XML">
+    <select itemPath="details" produces="XML">
 <urls>
 <url></url>
 </urls>
