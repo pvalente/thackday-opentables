@@ -22,7 +22,7 @@ var entry = <details></details>;
 
 cpf = new RegExp("\\d{3}\\.\\d{3}\\.\\d{3}-\\d{2}").exec(data); // search by id in entire a tag
 cpf = cpf[0];
-nome = new RegExp("<b>Nome de batismo</b>:<br> (.*)</p>").exec(data);
+nome = new RegExp("\&lt;b\&gt;Nome de batismo\&lt;/b\&gt;:\&lt;br\&gt; (.*)\&lt;/p\&gt;").exec(data);
 if (nome != null) {
 	nome = nome[1];
 }
