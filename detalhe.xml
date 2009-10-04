@@ -21,7 +21,7 @@ var entry = <details></details>;
 cpf = new RegExp("\\d{3}\\.\\d{3}\\.\\d{3}-\\d{2}").exec(data); // search by id in entire a tag
 cpf = cpf[0];
 
-data_txt = y.xpath(data,"//*/p[@id='txt']")
+data_txt = y.xpath(data,"//p[@id='txt']")
 y.log(data_txt);
 
 nome = new RegExp("batismo(.*)/p").exec(data_txt);
