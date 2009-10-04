@@ -24,10 +24,10 @@ cpf = cpf[0];
 data_txt = y.xpath(data,"//p[@id='txt']")
 y.log(data_txt);
 
-nome = new RegExp("batismo(.*)\\s+:\\s+(.*)").exec(data_txt);
+nome = new RegExp("batismo(.*)\\s+:\\s+(.*)\\s+(.*)").exec(data_txt);
 
 if (nome != null) {
-	nome = nome[2];
+	nome = nome[3];
 }
 
 image_url = new RegExp('<img src=\"(.*)\">').exec(data);
