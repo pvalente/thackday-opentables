@@ -16,7 +16,13 @@
 var q = y.query('select * from html where url="http://www.excelencias.org.br/candidatos/@candidato_n.php?id='+id+'"');  
 var data = q.results;  
 
-response.object = data;
+var entry = <details></details>;
+
+entry.appendChild(<cpf>000.000.000-99</cpf>); //
+entry.appendChild(<nome>Nome do politico</nome>);
+entry.appendChild(<partido>PSSS</partido>);
+
+response.object = entry;
 ]]></execute>
     </select>
  
