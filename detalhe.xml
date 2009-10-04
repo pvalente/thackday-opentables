@@ -5,7 +5,7 @@
         <sampleQuery>select * from {table} where id=720</sampleQuery>
   </meta>
   <bindings>
-    <select itemPath="details" produces="XML">
+    <select itemPath="results" produces="XML">
 <urls>
 <url></url>
 </urls>
@@ -16,11 +16,7 @@
 var q = y.query('select * from html where url="http://www.excelencias.org.br/candidatos/@candidato_n.php?id='+id+'"');  
 var data = q.results;  
 
-var entry = <details></details>;
-
-entry.appendChild(<data>{data}</data>); //
-
-response.object = entry;
+response.object = data;
 ]]></execute>
     </select>
  
