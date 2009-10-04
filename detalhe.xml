@@ -18,7 +18,10 @@ var data = q.results;
 
 var entry = <details></details>;
 
-entry.appendChild(<cpf>000.000.000-99</cpf>); //
+cpf = new RegExp("\\d{3}\\.\\d{3}\\.\\d{3}-\\d{2}").exec(data); // search by id in entire a tag
+cpf = cpf[0];
+
+entry.appendChild(<cpf>{cpf}</cpf>); //
 entry.appendChild(<nome>Nome do politico</nome>);
 entry.appendChild(<partido>PSSS</partido>);
 
