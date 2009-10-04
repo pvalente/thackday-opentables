@@ -1,42 +1,46 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="ISO-8859-1"?>
 <table xmlns="http://query.yahooapis.com/v1/schema/table.xsd">
   <meta>
 	<description></description>
-<sampleQuery>select * from {table} where nome="maluf"</sampleQuery> 
+        <sampleQuery>select * from {table} where nome="maluf"</sampleQuery> 
   </meta>
   <bindings>
-    <select itemPath="" produces="XML">
+    <select itemPath="lero.political" produces="XML">
 <urls>
 <url></url>
 </urls>
+<inputs>
+    <key id='nome' type='xs:string' paramType='variable' required="true" />  
+</inputs>
 <execute><![CDATA[
-	 default xml namespace = "http://www.w3.org/2005/Atom";
-var xml = request.get().response; //call the url defined above
+var q = y.query('select content, href, strong from html where '
+                 + 'url="http://www.excelencias.org.br/@busca.php?nome='
+                 + nome +'" and xpath=\'//a\'');
 
-var nome = "maluf";
-var q = y.query('select href, strong from html where url="http://www.excelencias.org.br/@busca.php?nome='+ nome +'" and xpath=\'//div[@id="contem"]/a\'');  
-var results = q.results;  
-results = xml;
+var results = q.results; 
+var entries = <lero></lero>;
 
-entries = <entries></entries>;//prep the output object
-entry = null; //individual entry in xml obj. used in loop below.
-a = null;
+// defining vars to re-use on for loop
+var id = null;
+var fdp = null;
+var partido = null;
 
-for each(a in results){
-var id = new RegExp("id=\\d+").exec(a.href);
-var fdp = a.strong;
-a.appendChild(id);
-a.appendChild(fdp);
-entries.appendChild(a);
+for each(a in results.a){
+    var entry = <political></political>;
+    id = new RegExp("id=(\\d+)").exec(a); // search by id in entire a tag
+    id = id[1];   // get the second ocurrence
+    fdp = a.strong.text() + ' - ' + a.text() ; // get the text from tag strong
+    partido = new RegExp("- (.*)$").exec(a.text());
+    if (partido != null) {
+         partido = partido[1];
+    }
+    entry.appendChild(<id>{id}</id>); //
+    entry.appendChild(<nome>{fdp}</nome>);
+    entry.appendChild(<partido>{partido}</partido>);
+    entry.appendChild(<url>http://www.excelencias.org.br/candidatos/@candidato_n.php?id={id}</url>);
+    entries.appendChild(entry);
 }
-response.object = '<results>'
-+'        <a href="@casa.php?id=720&amp;cs=1">'
-+'            <strong>Paulo Maluf</strong>'
-+'       </a>'
-+'        <a href="@casa.php?id=6864&amp;cs=13">'
-+'            <strong>Guilherme Antonio Maluf</strong>'
-+'        </a>'
-+'    </results>';
+response.object = entries;
 ]]></execute>
     </select>
  
