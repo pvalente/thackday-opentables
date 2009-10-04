@@ -16,7 +16,7 @@
 var q = y.query('select * from html where url="http://www.excelencias.org.br/candidatos/@candidato_n.php?id='+id+'"');  
 var data = q.results;  
 
-y.log(y.xpath(data,'//*/td/img'));
+y.log(y.xpath(data,'//*/td/img')[1]);
 
 
 var entry = <details></details>;
