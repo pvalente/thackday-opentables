@@ -24,8 +24,7 @@ cpf = cpf[0];
 data_txt = y.xpath(data,"//*/p[@id='txt']")
 y.log(data_txt);
 
-nome = new RegExp("batismo(.*)</p>").exec(data);
-
+nome = new RegExp(".*batismo(.*)</p>").exec(data);
 
 if (nome != null) {
 	nome = nome[1];
