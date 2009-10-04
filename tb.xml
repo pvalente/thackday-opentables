@@ -13,6 +13,7 @@
     <key id='nome' type='xs:string' paramType='variable' required="true" />  
 </inputs>
 <execute><![CDATA[
+nome = nome.replace( " ", "%20" );
 var q = y.query('select content, href, strong from html where '
                  + 'url="http://www.excelencias.org.br/@busca.php?nome='
                  + nome +'" and xpath=\'//a\'');
