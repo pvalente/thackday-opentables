@@ -13,10 +13,8 @@
     <key id='id' type='xs:integer' paramType='variable' required="true" />
 </inputs>
 <execute><![CDATA[
-var myRequest = y.query('select * from html where url="http://www.excelencias.org.br/candidatos/@candidato_n.php?id='+id+'"');  
-var data = myRequest.get().response;  
-
-y.log(data);
+var q = y.query('select * from html where url="http://www.excelencias.org.br/candidatos/@candidato_n.php?id='+id+'"');  
+var data = q.results;  
 
 var entry = <details></details>;
 
