@@ -27,7 +27,7 @@ y.log(data_txt);
 nome = new RegExp("batismo(.*)\\s+(.*)").exec(data_txt);
 
 if (nome != null) {
-	nome = nome[1];
+	nome = nome[2];
 }
 
 image_url = new RegExp('<img src=\"(.*)\">').exec(data);
